@@ -5,7 +5,7 @@ FROM python:3.9
 WORKDIR /app
 
 # Copy the Python api and train_model and requirements.txt to the working directory
-COPY eran_api.py requirements.txt train_model.py /app/
+COPY data_api.py requirements.txt train_model.py /app/
 
 # Install the required packages using pip
 RUN pip install --no-cache-dir -r requirements.txt
@@ -17,4 +17,4 @@ RUN python3 train_model.py
 EXPOSE 8000
 
 # Start the API when the container is run
-CMD ["python3", "eran_api.py"]
+CMD ["python3", "data_api.py"]

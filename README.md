@@ -3,12 +3,12 @@
 ## Build
 
 ```bash
-docker build -t my_api .
+docker build -t data_api .
 ```
 
 ## Run
 ```bash
-docker run -d -p 9000:8000 --name my_container my_api
+docker run -d -p 9000:8000 --name data_api_container data_api
 ```
 
 ## Test
