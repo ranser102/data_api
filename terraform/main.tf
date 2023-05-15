@@ -65,6 +65,10 @@ resource "null_resource" "docker_packaging" {
 
 ############
 
+resource "aws_cloudwatch_log_group" "data_api_logs" {
+  name = "/ecs/data-api-logs"
+}
+
 resource "aws_ecs_cluster" "data_cluster" {
   name = "data-cluster"
 }
@@ -84,8 +88,17 @@ resource "aws_ecs_task_definition" "data_task" {
         }
       ],
       "memory": 2048,
-      "cpu": 512
-    }
+      "cpu": 512,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+            "awslogs-create-group": "true",
+            "awslogs-group": "/ecs/data-api-logs",
+            "awslogs-region": "us-east-1",
+            "awslogs-stream-prefix": "data-api"
+        }
+      }
+    } 
   ]
   DEFINITION
   requires_compatibilities = ["FARGATE"]

@@ -1,5 +1,5 @@
 # Use a base image with Python installed
-FROM python:3.9
+FROM --platform=linux/amd64 python:3.9
 
 # Set the working directory inside the container
 WORKDIR /app
